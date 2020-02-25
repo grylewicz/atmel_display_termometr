@@ -1,0 +1,388 @@
+
+atmel_display_termometr.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000002aa  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  000002aa  0000033e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000005  00800062  00800062  00000340  2**0
+                  ALLOC
+  3 .comment      00000011  00000000  00000000  00000340  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000354  2**2
+                  CONTENTS, READONLY
+  5 .debug_info   0000040e  00000000  00000000  00000394  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000003d7  00000000  00000000  000007a2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000001a  00000000  00000000  00000b79  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000163  00000000  00000000  00000b93  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	1a c0       	rjmp	.+52     	; 0x36 <__ctors_end>
+   2:	32 c0       	rjmp	.+100    	; 0x68 <__bad_interrupt>
+   4:	31 c0       	rjmp	.+98     	; 0x68 <__bad_interrupt>
+   6:	30 c0       	rjmp	.+96     	; 0x68 <__bad_interrupt>
+   8:	2f c0       	rjmp	.+94     	; 0x68 <__bad_interrupt>
+   a:	2e c0       	rjmp	.+92     	; 0x68 <__bad_interrupt>
+   c:	2d c0       	rjmp	.+90     	; 0x68 <__bad_interrupt>
+   e:	2c c0       	rjmp	.+88     	; 0x68 <__bad_interrupt>
+  10:	2b c0       	rjmp	.+86     	; 0x68 <__bad_interrupt>
+  12:	2a c0       	rjmp	.+84     	; 0x68 <__bad_interrupt>
+  14:	29 c0       	rjmp	.+82     	; 0x68 <__bad_interrupt>
+  16:	28 c0       	rjmp	.+80     	; 0x68 <__bad_interrupt>
+  18:	27 c0       	rjmp	.+78     	; 0x68 <__bad_interrupt>
+  1a:	ab c0       	rjmp	.+342    	; 0x172 <__vector_13>
+  1c:	25 c0       	rjmp	.+74     	; 0x68 <__bad_interrupt>
+  1e:	24 c0       	rjmp	.+72     	; 0x68 <__bad_interrupt>
+  20:	23 c0       	rjmp	.+70     	; 0x68 <__bad_interrupt>
+  22:	22 c0       	rjmp	.+68     	; 0x68 <__bad_interrupt>
+  24:	21 c0       	rjmp	.+66     	; 0x68 <__bad_interrupt>
+
+00000026 <__trampolines_end>:
+  26:	c0 f9       	bld	r28, 0
+  28:	a4 b0       	in	r10, 0x04	; 4
+  2a:	99 92       	st	Y+, r9
+  2c:	82 d8       	rcall	.-3836   	; 0xfffff132 <__eeprom_end+0xff7ef132>
+  2e:	80 90 9c bf 	lds	r8, 0xBF9C	; 0x80bf9c <__bss_end+0xbf35>
+  32:	86 af       	std	Z+62, r24	; 0x3e
+  34:	ff 00       	.word	0x00ff	; ????
+
+00000036 <__ctors_end>:
+  36:	11 24       	eor	r1, r1
+  38:	1f be       	out	0x3f, r1	; 63
+  3a:	cf ed       	ldi	r28, 0xDF	; 223
+  3c:	cd bf       	out	0x3d, r28	; 61
+
+0000003e <__do_copy_data>:
+  3e:	10 e0       	ldi	r17, 0x00	; 0
+  40:	a0 e6       	ldi	r26, 0x60	; 96
+  42:	b0 e0       	ldi	r27, 0x00	; 0
+  44:	ea ea       	ldi	r30, 0xAA	; 170
+  46:	f2 e0       	ldi	r31, 0x02	; 2
+  48:	02 c0       	rjmp	.+4      	; 0x4e <__SREG__+0xf>
+  4a:	05 90       	lpm	r0, Z+
+  4c:	0d 92       	st	X+, r0
+  4e:	a2 36       	cpi	r26, 0x62	; 98
+  50:	b1 07       	cpc	r27, r17
+  52:	d9 f7       	brne	.-10     	; 0x4a <__SREG__+0xb>
+
+00000054 <__do_clear_bss>:
+  54:	20 e0       	ldi	r18, 0x00	; 0
+  56:	a2 e6       	ldi	r26, 0x62	; 98
+  58:	b0 e0       	ldi	r27, 0x00	; 0
+  5a:	01 c0       	rjmp	.+2      	; 0x5e <.do_clear_bss_start>
+
+0000005c <.do_clear_bss_loop>:
+  5c:	1d 92       	st	X+, r1
+
+0000005e <.do_clear_bss_start>:
+  5e:	a7 36       	cpi	r26, 0x67	; 103
+  60:	b2 07       	cpc	r27, r18
+  62:	e1 f7       	brne	.-8      	; 0x5c <.do_clear_bss_loop>
+  64:	c9 d0       	rcall	.+402    	; 0x1f8 <main>
+  66:	1f c1       	rjmp	.+574    	; 0x2a6 <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	cb cf       	rjmp	.-106    	; 0x0 <__vectors>
+
+0000006a <ds18b20_reset>:
+  6a:	c4 98       	cbi	0x18, 4	; 24
+  6c:	bc 9a       	sbi	0x17, 4	; 23
+  6e:	80 ea       	ldi	r24, 0xA0	; 160
+  70:	8a 95       	dec	r24
+  72:	f1 f7       	brne	.-4      	; 0x70 <ds18b20_reset+0x6>
+  74:	bc 98       	cbi	0x17, 4	; 23
+  76:	94 e1       	ldi	r25, 0x14	; 20
+  78:	9a 95       	dec	r25
+  7a:	f1 f7       	brne	.-4      	; 0x78 <ds18b20_reset+0xe>
+  7c:	86 b3       	in	r24, 0x16	; 22
+  7e:	9c e8       	ldi	r25, 0x8C	; 140
+  80:	9a 95       	dec	r25
+  82:	f1 f7       	brne	.-4      	; 0x80 <ds18b20_reset+0x16>
+  84:	80 71       	andi	r24, 0x10	; 16
+  86:	08 95       	ret
+
+00000088 <ds18b20_write_bit>:
+  88:	c4 98       	cbi	0x18, 4	; 24
+  8a:	bc 9a       	sbi	0x17, 4	; 23
+  8c:	00 00       	nop
+  8e:	81 11       	cpse	r24, r1
+  90:	bc 98       	cbi	0x17, 4	; 23
+  92:	84 e1       	ldi	r24, 0x14	; 20
+  94:	8a 95       	dec	r24
+  96:	f1 f7       	brne	.-4      	; 0x94 <ds18b20_write_bit+0xc>
+  98:	bc 98       	cbi	0x17, 4	; 23
+  9a:	08 95       	ret
+
+0000009c <ds18b20_read_bit>:
+  9c:	c4 98       	cbi	0x18, 4	; 24
+  9e:	bc 9a       	sbi	0x17, 4	; 23
+  a0:	00 00       	nop
+  a2:	bc 98       	cbi	0x17, 4	; 23
+  a4:	84 e0       	ldi	r24, 0x04	; 4
+  a6:	8a 95       	dec	r24
+  a8:	f1 f7       	brne	.-4      	; 0xa6 <ds18b20_read_bit+0xa>
+  aa:	00 c0       	rjmp	.+0      	; 0xac <ds18b20_read_bit+0x10>
+  ac:	86 b3       	in	r24, 0x16	; 22
+  ae:	9f e0       	ldi	r25, 0x0F	; 15
+  b0:	9a 95       	dec	r25
+  b2:	f1 f7       	brne	.-4      	; 0xb0 <ds18b20_read_bit+0x14>
+  b4:	82 95       	swap	r24
+  b6:	81 70       	andi	r24, 0x01	; 1
+  b8:	08 95       	ret
+
+000000ba <ds18b20_write_byte>:
+  ba:	cf 93       	push	r28
+  bc:	df 93       	push	r29
+  be:	d8 2f       	mov	r29, r24
+  c0:	c9 e0       	ldi	r28, 0x09	; 9
+  c2:	c1 50       	subi	r28, 0x01	; 1
+  c4:	29 f0       	breq	.+10     	; 0xd0 <ds18b20_write_byte+0x16>
+  c6:	8d 2f       	mov	r24, r29
+  c8:	81 70       	andi	r24, 0x01	; 1
+  ca:	de df       	rcall	.-68     	; 0x88 <ds18b20_write_bit>
+  cc:	d6 95       	lsr	r29
+  ce:	f9 cf       	rjmp	.-14     	; 0xc2 <ds18b20_write_byte+0x8>
+  d0:	df 91       	pop	r29
+  d2:	cf 91       	pop	r28
+  d4:	08 95       	ret
+
+000000d6 <ds18b20_read_byte>:
+  d6:	cf 93       	push	r28
+  d8:	df 93       	push	r29
+  da:	d9 e0       	ldi	r29, 0x09	; 9
+  dc:	c0 e0       	ldi	r28, 0x00	; 0
+  de:	d1 50       	subi	r29, 0x01	; 1
+  e0:	39 f0       	breq	.+14     	; 0xf0 <__stack+0x11>
+  e2:	dc df       	rcall	.-72     	; 0x9c <ds18b20_read_bit>
+  e4:	87 95       	ror	r24
+  e6:	88 27       	eor	r24, r24
+  e8:	87 95       	ror	r24
+  ea:	c6 95       	lsr	r28
+  ec:	c8 2b       	or	r28, r24
+  ee:	f7 cf       	rjmp	.-18     	; 0xde <ds18b20_read_byte+0x8>
+  f0:	8c 2f       	mov	r24, r28
+  f2:	df 91       	pop	r29
+  f4:	cf 91       	pop	r28
+  f6:	08 95       	ret
+
+000000f8 <ds18b20_config>:
+  f8:	b8 df       	rcall	.-144    	; 0x6a <ds18b20_reset>
+  fa:	8c ec       	ldi	r24, 0xCC	; 204
+  fc:	de df       	rcall	.-68     	; 0xba <ds18b20_write_byte>
+  fe:	8e e4       	ldi	r24, 0x4E	; 78
+ 100:	dc df       	rcall	.-72     	; 0xba <ds18b20_write_byte>
+ 102:	80 e0       	ldi	r24, 0x00	; 0
+ 104:	da df       	rcall	.-76     	; 0xba <ds18b20_write_byte>
+ 106:	80 e0       	ldi	r24, 0x00	; 0
+ 108:	d8 df       	rcall	.-80     	; 0xba <ds18b20_write_byte>
+ 10a:	8f e1       	ldi	r24, 0x1F	; 31
+ 10c:	d6 cf       	rjmp	.-84     	; 0xba <ds18b20_write_byte>
+
+0000010e <ds18b20_read_temperature>:
+ 10e:	cf 93       	push	r28
+ 110:	df 93       	push	r29
+ 112:	ab df       	rcall	.-170    	; 0x6a <ds18b20_reset>
+ 114:	8c ec       	ldi	r24, 0xCC	; 204
+ 116:	d1 df       	rcall	.-94     	; 0xba <ds18b20_write_byte>
+ 118:	84 e4       	ldi	r24, 0x44	; 68
+ 11a:	cf df       	rcall	.-98     	; 0xba <ds18b20_write_byte>
+ 11c:	bf df       	rcall	.-130    	; 0x9c <ds18b20_read_bit>
+ 11e:	88 23       	and	r24, r24
+ 120:	e9 f3       	breq	.-6      	; 0x11c <ds18b20_read_temperature+0xe>
+ 122:	a3 df       	rcall	.-186    	; 0x6a <ds18b20_reset>
+ 124:	8c ec       	ldi	r24, 0xCC	; 204
+ 126:	c9 df       	rcall	.-110    	; 0xba <ds18b20_write_byte>
+ 128:	8e eb       	ldi	r24, 0xBE	; 190
+ 12a:	c7 df       	rcall	.-114    	; 0xba <ds18b20_write_byte>
+ 12c:	d4 df       	rcall	.-88     	; 0xd6 <ds18b20_read_byte>
+ 12e:	c8 2f       	mov	r28, r24
+ 130:	d2 df       	rcall	.-92     	; 0xd6 <ds18b20_read_byte>
+ 132:	d8 2f       	mov	r29, r24
+ 134:	9a df       	rcall	.-204    	; 0x6a <ds18b20_reset>
+ 136:	8d 2f       	mov	r24, r29
+ 138:	82 95       	swap	r24
+ 13a:	80 7f       	andi	r24, 0xF0	; 240
+ 13c:	c2 95       	swap	r28
+ 13e:	cf 70       	andi	r28, 0x0F	; 15
+ 140:	8c 2b       	or	r24, r28
+ 142:	df 91       	pop	r29
+ 144:	cf 91       	pop	r28
+ 146:	08 95       	ret
+
+00000148 <d_led_init>:
+ 148:	8f ef       	ldi	r24, 0xFF	; 255
+ 14a:	81 bb       	out	0x11, r24	; 17
+ 14c:	82 bb       	out	0x12, r24	; 18
+ 14e:	87 b3       	in	r24, 0x17	; 23
+ 150:	8f 60       	ori	r24, 0x0F	; 15
+ 152:	87 bb       	out	0x17, r24	; 23
+ 154:	88 b3       	in	r24, 0x18	; 24
+ 156:	80 7f       	andi	r24, 0xF0	; 240
+ 158:	88 bb       	out	0x18, r24	; 24
+ 15a:	80 b7       	in	r24, 0x30	; 48
+ 15c:	82 60       	ori	r24, 0x02	; 2
+ 15e:	80 bf       	out	0x30, r24	; 48
+ 160:	83 b7       	in	r24, 0x33	; 51
+ 162:	83 60       	ori	r24, 0x03	; 3
+ 164:	83 bf       	out	0x33, r24	; 51
+ 166:	8d e4       	ldi	r24, 0x4D	; 77
+ 168:	86 bf       	out	0x36, r24	; 54
+ 16a:	89 b7       	in	r24, 0x39	; 57
+ 16c:	81 60       	ori	r24, 0x01	; 1
+ 16e:	89 bf       	out	0x39, r24	; 57
+ 170:	08 95       	ret
+
+00000172 <__vector_13>:
+ 172:	1f 92       	push	r1
+ 174:	0f 92       	push	r0
+ 176:	0f b6       	in	r0, 0x3f	; 63
+ 178:	0f 92       	push	r0
+ 17a:	11 24       	eor	r1, r1
+ 17c:	8f 93       	push	r24
+ 17e:	9f 93       	push	r25
+ 180:	ef 93       	push	r30
+ 182:	ff 93       	push	r31
+ 184:	88 b3       	in	r24, 0x18	; 24
+ 186:	80 7f       	andi	r24, 0xF0	; 240
+ 188:	88 bb       	out	0x18, r24	; 24
+ 18a:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__data_start>
+ 18e:	81 30       	cpi	r24, 0x01	; 1
+ 190:	19 f4       	brne	.+6      	; 0x198 <__vector_13+0x26>
+ 192:	e0 91 62 00 	lds	r30, 0x0062	; 0x800062 <__data_end>
+ 196:	0e c0       	rjmp	.+28     	; 0x1b4 <__vector_13+0x42>
+ 198:	82 30       	cpi	r24, 0x02	; 2
+ 19a:	19 f4       	brne	.+6      	; 0x1a2 <__vector_13+0x30>
+ 19c:	e0 91 64 00 	lds	r30, 0x0064	; 0x800064 <cy1>
+ 1a0:	09 c0       	rjmp	.+18     	; 0x1b4 <__vector_13+0x42>
+ 1a2:	84 30       	cpi	r24, 0x04	; 4
+ 1a4:	19 f4       	brne	.+6      	; 0x1ac <__vector_13+0x3a>
+ 1a6:	e0 91 65 00 	lds	r30, 0x0065	; 0x800065 <cy2>
+ 1aa:	04 c0       	rjmp	.+8      	; 0x1b4 <__vector_13+0x42>
+ 1ac:	88 30       	cpi	r24, 0x08	; 8
+ 1ae:	39 f4       	brne	.+14     	; 0x1be <__vector_13+0x4c>
+ 1b0:	e0 91 66 00 	lds	r30, 0x0066	; 0x800066 <cy3>
+ 1b4:	f0 e0       	ldi	r31, 0x00	; 0
+ 1b6:	ea 5d       	subi	r30, 0xDA	; 218
+ 1b8:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1ba:	e4 91       	lpm	r30, Z
+ 1bc:	e2 bb       	out	0x12, r30	; 18
+ 1be:	88 b3       	in	r24, 0x18	; 24
+ 1c0:	90 91 60 00 	lds	r25, 0x0060	; 0x800060 <__data_start>
+ 1c4:	9f 70       	andi	r25, 0x0F	; 15
+ 1c6:	80 7f       	andi	r24, 0xF0	; 240
+ 1c8:	89 2b       	or	r24, r25
+ 1ca:	88 bb       	out	0x18, r24	; 24
+ 1cc:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__data_start>
+ 1d0:	88 0f       	add	r24, r24
+ 1d2:	89 30       	cpi	r24, 0x09	; 9
+ 1d4:	08 f0       	brcs	.+2      	; 0x1d8 <__vector_13+0x66>
+ 1d6:	81 e0       	ldi	r24, 0x01	; 1
+ 1d8:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__data_start>
+ 1dc:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <check_temp>
+ 1e0:	8f 5f       	subi	r24, 0xFF	; 255
+ 1e2:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <check_temp>
+ 1e6:	ff 91       	pop	r31
+ 1e8:	ef 91       	pop	r30
+ 1ea:	9f 91       	pop	r25
+ 1ec:	8f 91       	pop	r24
+ 1ee:	0f 90       	pop	r0
+ 1f0:	0f be       	out	0x3f, r0	; 63
+ 1f2:	0f 90       	pop	r0
+ 1f4:	1f 90       	pop	r1
+ 1f6:	18 95       	reti
+
+000001f8 <main>:
+ 1f8:	a7 df       	rcall	.-178    	; 0x148 <d_led_init>
+ 1fa:	83 e0       	ldi	r24, 0x03	; 3
+ 1fc:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__data_end>
+ 200:	81 e0       	ldi	r24, 0x01	; 1
+ 202:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <cy1>
+ 206:	78 94       	sei
+ 208:	77 df       	rcall	.-274    	; 0xf8 <ds18b20_config>
+ 20a:	2f e9       	ldi	r18, 0x9F	; 159
+ 20c:	86 e8       	ldi	r24, 0x86	; 134
+ 20e:	91 e0       	ldi	r25, 0x01	; 1
+ 210:	21 50       	subi	r18, 0x01	; 1
+ 212:	80 40       	sbci	r24, 0x00	; 0
+ 214:	90 40       	sbci	r25, 0x00	; 0
+ 216:	e1 f7       	brne	.-8      	; 0x210 <main+0x18>
+ 218:	00 c0       	rjmp	.+0      	; 0x21a <main+0x22>
+ 21a:	00 00       	nop
+ 21c:	ca e0       	ldi	r28, 0x0A	; 10
+ 21e:	1e e0       	ldi	r17, 0x0E	; 14
+ 220:	dd e0       	ldi	r29, 0x0D	; 13
+ 222:	0c e0       	ldi	r16, 0x0C	; 12
+ 224:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <check_temp>
+ 228:	89 3c       	cpi	r24, 0xC9	; 201
+ 22a:	e0 f3       	brcs	.-8      	; 0x224 <main+0x2c>
+ 22c:	1e df       	rcall	.-452    	; 0x6a <ds18b20_reset>
+ 22e:	88 23       	and	r24, r24
+ 230:	49 f0       	breq	.+18     	; 0x244 <main+0x4c>
+ 232:	10 93 62 00 	sts	0x0062, r17	; 0x800062 <__data_end>
+ 236:	d0 93 64 00 	sts	0x0064, r29	; 0x800064 <cy1>
+ 23a:	d0 93 65 00 	sts	0x0065, r29	; 0x800065 <cy2>
+ 23e:	00 93 66 00 	sts	0x0066, r16	; 0x800066 <cy3>
+ 242:	22 c0       	rjmp	.+68     	; 0x288 <main+0x90>
+ 244:	64 df       	rcall	.-312    	; 0x10e <ds18b20_read_temperature>
+ 246:	28 2f       	mov	r18, r24
+ 248:	38 2f       	mov	r19, r24
+ 24a:	33 1f       	adc	r19, r19
+ 24c:	33 27       	eor	r19, r19
+ 24e:	33 1f       	adc	r19, r19
+ 250:	09 f0       	breq	.+2      	; 0x254 <main+0x5c>
+ 252:	21 95       	neg	r18
+ 254:	c0 93 62 00 	sts	0x0062, r28	; 0x800062 <__data_end>
+ 258:	82 2f       	mov	r24, r18
+ 25a:	6c 2f       	mov	r22, r28
+ 25c:	18 d0       	rcall	.+48     	; 0x28e <__udivmodqi4>
+ 25e:	90 93 64 00 	sts	0x0064, r25	; 0x800064 <cy1>
+ 262:	2a 30       	cpi	r18, 0x0A	; 10
+ 264:	40 f4       	brcc	.+16     	; 0x276 <main+0x7e>
+ 266:	31 30       	cpi	r19, 0x01	; 1
+ 268:	11 f0       	breq	.+4      	; 0x26e <main+0x76>
+ 26a:	8e e0       	ldi	r24, 0x0E	; 14
+ 26c:	01 c0       	rjmp	.+2      	; 0x270 <main+0x78>
+ 26e:	8b e0       	ldi	r24, 0x0B	; 11
+ 270:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <cy2>
+ 274:	04 c0       	rjmp	.+8      	; 0x27e <main+0x86>
+ 276:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <cy2>
+ 27a:	31 30       	cpi	r19, 0x01	; 1
+ 27c:	11 f0       	breq	.+4      	; 0x282 <main+0x8a>
+ 27e:	8e e0       	ldi	r24, 0x0E	; 14
+ 280:	01 c0       	rjmp	.+2      	; 0x284 <main+0x8c>
+ 282:	8b e0       	ldi	r24, 0x0B	; 11
+ 284:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <cy3>
+ 288:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <check_temp>
+ 28c:	cb cf       	rjmp	.-106    	; 0x224 <main+0x2c>
+
+0000028e <__udivmodqi4>:
+ 28e:	99 1b       	sub	r25, r25
+ 290:	79 e0       	ldi	r23, 0x09	; 9
+ 292:	04 c0       	rjmp	.+8      	; 0x29c <__udivmodqi4_ep>
+
+00000294 <__udivmodqi4_loop>:
+ 294:	99 1f       	adc	r25, r25
+ 296:	96 17       	cp	r25, r22
+ 298:	08 f0       	brcs	.+2      	; 0x29c <__udivmodqi4_ep>
+ 29a:	96 1b       	sub	r25, r22
+
+0000029c <__udivmodqi4_ep>:
+ 29c:	88 1f       	adc	r24, r24
+ 29e:	7a 95       	dec	r23
+ 2a0:	c9 f7       	brne	.-14     	; 0x294 <__udivmodqi4_loop>
+ 2a2:	80 95       	com	r24
+ 2a4:	08 95       	ret
+
+000002a6 <_exit>:
+ 2a6:	f8 94       	cli
+
+000002a8 <__stop_program>:
+ 2a8:	ff cf       	rjmp	.-2      	; 0x2a8 <__stop_program>
